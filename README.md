@@ -17,3 +17,5 @@ This repository contains python code for a small app built using python-flask th
 + If you are running ubuntu 15 and xampp on say port 9000, you will need pass that as a parameter when connecting to the database as can be seen on line 38 of app.py
 + Make sure your xampp is started before you proceed to run the code
 + Open a terminal, navigate to the directory where your code is found, then run it by typing: python app.py
++ Open your browser and point it to: 127.0.0.1:5000
++ SignUp and then logIn to add some contacts to your database
