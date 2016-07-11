@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bucket</title>
+    <script src="{{ url_for('static', filename='js/jquery-2.2.4.min.js') }}" type="text/javascript">
+    </script>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/signup.css') }}" rel="stylesheet">
+    
+    <!-- <script src="{{ url_for('static', filename='js/signUp.js') }}" type="text/javascript"></script> -->
+    <script type="text/javascript">
+      $(function(){
+        $('a#process_input').click(function(){
+          
+          $.getJSON('/signUp',{
+
+            inputName: $('input[name="inputName"]').val(),
+
+            inputEmail: $('input[name="inputEmail"]').val(),
+
+            inputPassword: $('input[name="inputPassword"]').val(),
+
+          }, function(data){
+            // console.log(data.result);
+            if (data.result == 200) {
+              //how do i hide this url in some base_url?
+              window.location="http://127.0.0.1:5000/showAll";
+              // console.log('Registration successful');
+            } else {
+              // console.log('Registration not successful');
+               $("#output").text(data.result);
+            }
+            
+          });
+          return false;
+        });
+      });
+      // this function takes me to the login page
+      function gotoLoginURL(){
+        window.location="http://127.0.0.1:5000/showLogin";
+      }
+      function gotoHomeURL(){
+        window.location="http://127.0.0.1:5000/";
+      }
+    </script>
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" onclick="gotoHomeURL()"><a href="#">Home</a></li>
+            <li role="presentation" onclick="gotoLoginURL()"><a href="#">Sign In</a></li>
+            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Python Flask App</h3>
+      </div>
+ 
+      <div class="jumbotron">
+        <h1>Bucket List App</h1>
+        <form class="form-signin">
+        <label for="inputName" class="sr-only">Name</label>
+        <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus/>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus/>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required/>
+        <a href="#" id=process_input><input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up" /></a>
+        <!-- <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button> -->
+        <p id=output></p>
+      </form>
+      </div>
+ 
+       
+ 
+      <footer class="footer">
+        <p>&copy; Nasali_Jr 2016</p>
+      </footer>
+ 
+    </div>
+  </body>
+</html>
