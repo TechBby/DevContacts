@@ -14,6 +14,8 @@ This repository contains python code for a small app built using python-flask th
 + connection
 
 <b>Instructions For Running</b>
++ create database FlaskApp using phpmyadmin say
++ import the FlaskApp.sql to create the database
 + If you are running ubuntu 15 and xampp on say port 9000, you will need pass that as a parameter when connecting to the database as can be seen on line 38 of app.py
 + Make sure your xampp is started before you proceed to run the code
 + Open a terminal, navigate to the directory where your code is found, then run it by typing: python app.py
